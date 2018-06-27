@@ -1,0 +1,7 @@
+{
+	"/plants/company/find": {
+		"target": "http://localhost:8080/plants/company/find",
+		"secure": false,
+		"logLevel": "debug"
+	}
+}
