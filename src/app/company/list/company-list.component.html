@@ -28,7 +28,11 @@
 	</thead>
 
 	<tbody>
-		<tr *ngFor="let item of mainGridList">
+		<tr
+			*ngFor="let item of mainGridList | paginate: { 
+                                                      itemsPerPage: 5,
+                                                      currentPage: currentPage,
+                                                      totalItems: mainGridList.length}">
 			<td>{{ item.name }}</td>
 			<td><button type="button" (click)="remove(item)"
 					class="btn btn-primary">remove</button></td>
@@ -37,4 +41,5 @@
 					routerLinkActive="active" class="btn btn-primary">edit</button></td>
 		</tr>
 	</tbody>
+	<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 </table>

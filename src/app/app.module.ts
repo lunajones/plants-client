@@ -16,6 +16,8 @@ import {Messenger} from './essencial/messenger.service';
 import {CustomHttpClient} from './essencial/custom-httpclient.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import {ToastrModule} from 'ngx-toastr';
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-    })
+    }),
+    NgxPaginationModule
   ],
   providers: [HttpClientModule, CustomHttpClient, CompanyService, Messenger],
   bootstrap: [AppComponent]

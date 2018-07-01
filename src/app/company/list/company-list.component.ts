@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 export class CompanyListComponent implements OnInit {
   mainFilter = <CompanyRequest>{};
   mainGridList = [];
-  messages = [];
+  currentPage: number = 1;
 
   constructor(private companyService: CompanyService, private router: Router, private messenger: Messenger) {}
 
@@ -24,7 +24,7 @@ export class CompanyListComponent implements OnInit {
   searchAll() {
     this.companyService.searchAll(this.mainFilter)
       .subscribe(data => {
-        this.mainGridList = data['content'];
+        this.mainGridList = data;
       });
   }
 
@@ -35,8 +35,8 @@ export class CompanyListComponent implements OnInit {
         this.messenger.showSuccessMessage('Removed');
         this.searchAll();
       },
-      error => {
-        this.messenger.showErrorMessage(error.message);
+      err => {
+        this.messenger.showErrorMessage(err.error);
       });
   }
 

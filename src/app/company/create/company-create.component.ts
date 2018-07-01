@@ -45,8 +45,8 @@ export class CompanyCreateComponent implements OnInit {
         this.messenger.showSuccessMessage('Created');
         this.goToSearchPage();
       },
-      error => {
-        this.messenger.showErrorMessage(error.message);
+      err => {
+        this.messenger.showErrorMessage(err.error);
       });
 
   }
@@ -56,8 +56,8 @@ export class CompanyCreateComponent implements OnInit {
       this.messenger.showSuccessMessage('Updated');
       this.goToSearchPage();
     },
-      error => {
-        this.messenger.showErrorMessage(error.message);
+      err => {
+        this.messenger.showErrorMessage(err.error);
       });
   }
 
