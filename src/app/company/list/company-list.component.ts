@@ -1,51 +1,44 @@
+import {Messenger} from '../../essencial/messenger.service';
 import {CompanyRequest} from '../company-request';
-import {CompanyResponse} from '../company-response';
+import {Company} from '../company';
 import {CompanyService} from '../company.service';
 import {Component, OnInit, NgZone, AfterViewInit} from '@angular/core';
 import {ViewChild} from '@angular/core';
-import {} from '@types/googlemaps';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-company-list',
   templateUrl: './company-list.component.html'
 })
 export class CompanyListComponent implements OnInit {
-  //  lat;
-  //  lng;
-  //
-  //  endereco = '';
-  //  listaUbs: Ary<any>;
-
-
   mainFilter = <CompanyRequest>{};
   mainGridList = [];
+  messages = [];
 
-  constructor(private companyService: CompanyService) {}
-  
+  constructor(private companyService: CompanyService, private router: Router, private messenger: Messenger) {}
+
   ngOnInit() {
 
-    //    if (navigator) {
-    //      navigator.geolocation.getCurrentPosition(pos => {
-    //        this.lng = +pos.coords.longitude;
-    //        this.lat = +pos.coords.latitude;
-    //      });
-    //    } else {
-    //      this.lat = -23.532787;
-    //      this.lng = -46.6602066;
-    //    }
   }
 
   searchAll() {
     this.companyService.searchAll(this.mainFilter)
-      .subscribe(result => this.mainGridList = result);
-
-
-
+      .subscribe(data => {
+        this.mainGridList = data['content'];
+      });
   }
 
+  remove(item: Company) {
 
-
-
+    this.companyService.remove(item.id)
+      .subscribe(data => {
+        this.messenger.showSuccessMessage('Removed');
+        this.searchAll();
+      },
+      error => {
+        this.messenger.showErrorMessage(error.message);
+      });
+  }
 
 
 

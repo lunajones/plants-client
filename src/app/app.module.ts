@@ -1,5 +1,5 @@
+import {NgModule, Component} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
@@ -7,27 +7,37 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {HeaderComponent} from './template/header/header.component';
 
-import {HttpClientModule} from '@angular/common/http';
-import {HttpHandler} from '@angular/common/http';
+import {HttpHandler, HttpClientModule} from '@angular/common/http';
 
 import {CompanyService} from './company/company.service';
 import {CompanyListComponent} from './company/list/company-list.component';
-import {CustomHttpClient} from './custom-httpclient.service';
+import {CompanyCreateComponent} from './company/create/company-create.component';
+import {Messenger} from './essencial/messenger.service';
+import {CustomHttpClient} from './essencial/custom-httpclient.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CompanyListComponent
+    CompanyListComponent,
+    CompanyCreateComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ],
-  providers: [HttpClientModule, CustomHttpClient, CompanyService],
+  providers: [HttpClientModule, CustomHttpClient, CompanyService, Messenger],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

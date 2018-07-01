@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 /* @import "~font-awesome/scss/font-awesome.scss"; */
-
 html {
 	display: block;
 	background-color: #DCDCDC;
@@ -86,16 +85,19 @@ h1 {
 	text-align: center;
 }
 
-.small-label{
-    text-align: right;
-    font-weight: bold;
-    font-size: 2vw;
-    padding-right: 0.5em;
+.small-label {
+	text-align: right;
+	font-weight: bold;
+	font-size: 2vw;
+	padding-right: 0.5em;
 	font-family: 'Helvetica Neue', sans-serif;
 }
 
-form{
-    background-color: orange;
-    width: 100%;
+form {
+	background-color: orange;
+	width: 100%;
 }
 
+input.ng-invalid.ng-touched {
+	border-color: red;
+}
