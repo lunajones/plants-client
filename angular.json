@@ -81,7 +81,6 @@
 						"scripts": [],
 						"assets": [
 							"src/favicon.ico",
-							"src/app_icon_64.png",
 							"src/assets"
 						]
 					}
