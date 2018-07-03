@@ -9,6 +9,7 @@
 			"projectType": "application",
 			"prefix": "app",
 			"schematics": {
+				
 			},
 			"architect": {
 				"build": {
@@ -25,10 +26,10 @@
 						],
 						"styles": [
 							"src/styles.css",
-							"node_modules/ngx-toastr/toastr.css"
+							"node_modules/ngx-toastr/toastr.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
-						"scripts": [
-						]
+						"scripts": []
 					},
 					"configurations": {
 						"production": {
@@ -77,10 +78,10 @@
 						"styles": [
 							"src/styles.css"
 						],
-						"scripts": [
-						],
+						"scripts": [],
 						"assets": [
 							"src/favicon.ico",
+							"src/app_icon_64.png",
 							"src/assets"
 						]
 					}

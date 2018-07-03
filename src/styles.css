@@ -1,103 +1,79 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-/* @import "~font-awesome/scss/font-awesome.scss"; */
-html {
+.app-icon-64-header {
+	content: '';
 	display: block;
-	background-color: #DCDCDC;
+	height: 64px;
+	width: 64px;
+	top: 0px;
+	left: 0px;
+	float: left;
+	background: transparent url(./app_icon_64.png) no-repeat 0px 0px;
 }
 
-body {
-	margin: 0;
-	padding: 0;
-}
-
-html, body {
-	height: 100%;
-	max-height: 100%;
-	width: 100%;
-	max-width: 100%;
-}
-
-app-header {
-	padding: 1.56em 2.5em;
-	background-color: orange;
-	box-shadow: 0.06em 0.12em 0.12em rgba(0, 0, 0, 0.15);
-	box-sizing: border-box;
-	width: 100%;
-	height: 10%;
+.app-icon-64-footer {
+	content: '';
+	display: inline;
+	height: 64px;
+	width: 64px;
+	background: transparent url(./app_icon_64.png) no-repeat 0px 0px;
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
 }
 
-app-company-list {
-	width: 100%;
-	height: 100%;
+.app-icon-32-footer {
+	content: '';
+	display: inline;
+	height: 32px;
+	width: 32px;
+	background: transparent url(./app_icon_32.png) no-repeat 0px 0px;
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
 }
 
-agm-map {
-	width: 100%;
-	height: 92%;
+.app-icon-24-footer {
+	content: '';
+	display: inline;
+	height: 24px;
+	width: 24px;
+	background: transparent url(./app_icon_24.png) no-repeat 0px 0px;
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
-	box-sizing: border-box;
 }
 
-input {
-	box-shadow: 0.06em 0.12em 0.12em rgba(0, 0, 0, 0.15);
-	box-sizing: border-box;
-	background: #666;
-	font-size: 1.5vw;
-	line-height: normal;
-	border: 1px solid transparent;
-	text-rendering: auto;
-	letter-spacing: normal;
-	word-spacing: normal;
-	text-transform: none;
-	text-indent: 0em;
-	text-shadow: none;
-	display: inline-block;
-	text-align: start;
-	padding-top: 0.2em;
-	text-align: left;
+.title {
+	
 }
 
-app-company-list {
-	box-sizing: border-box;
+.subtitle {
+	margin-left: 64px;
+}
+
+.header {
+	
+}
+
+.footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	width: 100%;
-	min-height: 100%;
-	height: 100%;
+	margin-bottom: 0px !important;
+}
+
+.copyright {
+	font-size: 0.75rem !important;
+}
+
+.footer-main-content {
+	font-size: 1rem !important;
+	font-weight: 300
+}
+
+.centered-content {
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
-	margin: 0;
-	display: block;
-	min-height: 100%;
-	height: 100%;
-}
-
-h1 {
-	float: center;
-	line-height: .0em;
-	margin: 0;
-	color: black;
-	font-family: 'Helvetica Neue', sans-serif;
-	font-size: 4vw;
-	font-weight: bold;
-	letter-spacing: 0.2vw;
-	line-height: 1;
-	text-align: center;
-}
-
-.small-label {
-	text-align: right;
-	font-weight: bold;
-	font-size: 2vw;
-	padding-right: 0.5em;
-	font-family: 'Helvetica Neue', sans-serif;
-}
-
-form {
-	background-color: orange;
-	width: 100%;
-}
-
-input.ng-invalid.ng-touched {
-	border-color: red;
 }
