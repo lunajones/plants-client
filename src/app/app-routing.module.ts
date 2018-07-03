@@ -4,7 +4,6 @@ import {CompanyListComponent} from './company/list/company-list.component';
 import {CompanyCreateComponent} from './company/create/company-create.component';
 
 const routes: Routes = [
-  //O primeiro eh alteravel para facilitar inicializacao de testes
   {
     path: '',
     redirectTo: '/company/list',
@@ -12,18 +11,31 @@ const routes: Routes = [
   },
   {
     path: 'company',
+    data: {
+      breadcrumb: 'Company'
+    },
     children: [
       {
         path: 'list',
-        component: CompanyListComponent
+        component: CompanyListComponent,
+        data: {
+          breadcrumb: 'List'
+        }
+
       },
       {
         path: 'create',
-        component: CompanyCreateComponent
+        component: CompanyCreateComponent,
+        data: {
+          breadcrumb: 'New'
+        }
       },
       {
         path: 'edit/:id',
-        component: CompanyCreateComponent
+        component: CompanyCreateComponent,
+        data: {
+          breadcrumb: 'Edit'
+        }
       }
     ]
   }

@@ -1,3 +1,4 @@
+import {BaseListComponent} from '../../base/base.component';
 import {Company} from '../company';
 import {CompanyService} from '../company.service';
 import {Component, OnInit, NgZone, AfterViewInit} from '@angular/core';
@@ -15,15 +16,16 @@ export class CompanyCreateComponent implements OnInit {
   messages = [];
   id: number;
 
-  constructor(private companyService: CompanyService, private router: Router, private route: ActivatedRoute
-    , private messenger: Messenger) {}
+  constructor(private companyService: CompanyService, private router: Router, private activatedRoute: ActivatedRoute
+    , private messenger: Messenger) {
+  }
 
   ngOnInit() {
     this.loadMergeableById();
   }
 
   loadMergeableById() {
-    this.route.params.subscribe(data => {
+    this.activatedRoute.params.subscribe(data => {
       if (data['id'] !== undefined) {
         this.mergeable.id = +data['id'];
         this.searchById();

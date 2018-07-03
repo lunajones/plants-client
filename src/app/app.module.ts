@@ -17,6 +17,9 @@ import {CustomHttpClient} from './essencial/custom-httpclient.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {AppBreadcrumbComponent} from './app-breadcrumb.component';
+import {MenuComponent} from './template/menu/menu.component';
+
 
 
 
@@ -24,6 +27,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
   declarations: [
     AppComponent,
     HeaderComponent,
+    MenuComponent,
+    AppBreadcrumbComponent,
     CompanyListComponent,
     CompanyCreateComponent
   ],

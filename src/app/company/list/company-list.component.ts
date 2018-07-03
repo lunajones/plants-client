@@ -1,3 +1,4 @@
+import {BaseListComponent} from '../../base/base.component';
 import {Messenger} from '../../essencial/messenger.service';
 import {CompanyRequest} from '../company-request';
 import {Company} from '../company';
@@ -10,12 +11,15 @@ import {Router} from '@angular/router';
   selector: 'app-company-list',
   templateUrl: './company-list.component.html'
 })
-export class CompanyListComponent implements OnInit {
+export class CompanyListComponent extends BaseListComponent implements OnInit {
   mainFilter = <CompanyRequest>{};
   mainGridList = [];
-  currentPage: number = 1;
+  currentPage = 1;
 
-  constructor(private companyService: CompanyService, private router: Router, private messenger: Messenger) {}
+
+  constructor(private companyService: CompanyService, private router: Router, private messenger: Messenger) {
+    super();
+  }
 
   ngOnInit() {
 
@@ -25,6 +29,7 @@ export class CompanyListComponent implements OnInit {
     this.companyService.searchAll(this.mainFilter)
       .subscribe(data => {
         this.mainGridList = data;
+        this.hasSearched = true;
       });
   }
 
@@ -34,6 +39,7 @@ export class CompanyListComponent implements OnInit {
       .subscribe(data => {
         this.messenger.showSuccessMessage('Removed');
         this.searchAll();
+        this.hasSearched = true;
       },
       err => {
         this.messenger.showErrorMessage(err.error);

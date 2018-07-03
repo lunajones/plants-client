@@ -1,45 +1,68 @@
 
 
 <form class="form-inline form" #form="ngForm">
-	<div class="form-group col-sm-12 col-md-12">
-		<label class="small-label">Name: </label> <input type="text"
-			class="form-control col-xs-8 col-md-8" name="input_company_name"
-			[(ngModel)]="mainFilter.name" placeholder="Type in company name"
-			required>
-		<button type="button" routerLink="/company/create"
-			routerLinkActive="active" class="btn btn-success">new</button>
-		<button type="button" (click)="searchAll()" class="btn btn-primary">search</button>
-
-		<!-- <a><i class="fas fa-search"></i></a> -->
+	<div class="container bg-light">
+		<p class="pt-3"></p>
+		<div class="form-group">
+			<div class="input-group ml-3 mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="name">Name</span>
+				</div>
+				<input type="text" class="form-control " name="input_company_name"
+					[(ngModel)]="mainFilter.name" placeholder="Type in company name"
+					aria-describedby="name" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-xs-12 m-sm-auto ">
+				<button type="button" routerLink="/company/create"
+					routerLinkActive="active" class="btn btn-success ml-1 mr-1">new</button>
+				<button type="button" (click)="searchAll()"
+					class="btn btn-primary ml-1 mr-1">search</button>
+			</div>
+		</div>
 	</div>
-
-
 </form>
 
+<div class="container pt-3 pb-3 bg-light">
+	<div *ngIf="mainGridList?.length > 0" class="clearfix p-2 b2">
+		<span class="badge badge-success">We found <b>{{mainGridList?.length}}</b>
+			companies.
+		</span>
+	</div>
+	<div *ngIf="mainGridList?.length == 0 && hasSearched"
+		class="clearfix p-2 b-2">
+		<span class="badge badge-danger">We haven't found companies for
+			you. Sorry.</span>
+	</div>
+	<table class="form-group table table-sm table-hover"
+		*ngIf="mainGridList?.length > 0">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">Delete</th>
+				<th scope="col">Update</th>
+			</tr>
+		</thead>
 
-<table class="form-group table table-hover"
-	*ngIf="mainGridList?.length > 0">
-	<thead>
-		<tr>
-			<td>Name</td>
-			<td>Delete</td>
-			<td>Update</td>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr
-			*ngFor="let item of mainGridList | paginate: { 
+		<tbody>
+			<tr
+				*ngFor="let item of mainGridList | paginate: { 
                                                       itemsPerPage: 5,
                                                       currentPage: currentPage,
                                                       totalItems: mainGridList.length}">
-			<td>{{ item.name }}</td>
-			<td><button type="button" (click)="remove(item)"
-					class="btn btn-primary">remove</button></td>
-			<td><button type="button"
-					[routerLink]="['../../','company', 'edit', item.id]"
-					routerLinkActive="active" class="btn btn-primary">edit</button></td>
-		</tr>
-	</tbody>
-	<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
-</table>
+				<td>{{ item.name }}</td>
+				<td><button type="button" (click)="remove(item)"
+						class="btn btn-primary">remove</button></td>
+				<td><button type="button"
+						[routerLink]="['../../','company', 'edit', item.id]"
+						routerLinkActive="active" class="btn btn-primary">edit</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="container" *ngIf="mainGridList?.length > 0">
+		<div class="col-xs-12 text-center">
+			<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+		</div>
+	</div>
+</div>
