@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 
 import {HeaderComponent} from './template/header/header.component';
+import {FooterComponent} from './template/footer/footer.component';
 
 import {HttpHandler, HttpClientModule} from '@angular/common/http';
 
@@ -29,6 +30,7 @@ import {MenuComponent} from './template/menu/menu.component';
     HeaderComponent,
     MenuComponent,
     AppBreadcrumbComponent,
+    FooterComponent,
     CompanyListComponent,
     CompanyCreateComponent
   ],

@@ -1,6 +1,6 @@
 
 <nav aria-label="breadcrumb">
-	<ol class="breadcrumb">
+	<ol class="breadcrumb no-margin-top-bottom">
 		<li class="breadcrumb-item"><a routerLink="">Home</a></li>
 		<li *ngFor="let breadcrumb of breadcrumbs"
 			[ngClass]="isLastBreadcrumb(breadcrumb) ? 'breadcrumb-item active' : 'breadcrumb-item'">

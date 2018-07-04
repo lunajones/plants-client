@@ -25,6 +25,15 @@ export class CompanyListComponent extends BaseListComponent implements OnInit {
 
   }
 
+  clear() {
+    this.companyService.searchAll(this.mainFilter)
+      .subscribe(data => {
+        this.mainFilter = <CompanyRequest>{};
+        this.mainGridList = [];
+        this.hasSearched = false;
+      });
+  }
+
   searchAll() {
     this.companyService.searchAll(this.mainFilter)
       .subscribe(data => {
