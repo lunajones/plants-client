@@ -1,0 +1,40 @@
+.menu-app-name{
+  color: #2F4F4F;
+}
+
+.menu-option {
+  color: #2F4F4F	;
+}
+
+.section-logged-in-user{
+  height:24px;
+}
+
+.section-user-icon {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.user-icon {
+  font-size: 24px;
+  color: #2F4F4F;
+}
+
+.section-user-name {
+  width: 6rem;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+
+.user-name {
+  color: #2F4F4F;;
+}
+
+.menu-bar {
+  background-color: #17a2b8	 !important;
+
+}

@@ -1,0 +1,8 @@
+<div class="form-group" [formGroup]="form">
+  <input #input type="{{type}}" class="rounded-input" [class.has-error]="showErrorMessage()" id="input_{{id}}"
+         name="input_{{name}}" formControlName="{{formControlNameInput}}"
+         placeholder="{{placeHolderInput}}" autocomplete="off" (blur)="onBlurInput()" (focus)="onFocusInput()" )>
+  <ng-content></ng-content>
+  <br>
+</div>
+<span class="help-block field-validation-message" *ngIf="showErrorMessage()"><i class="fa fa-remove text-danger"></i>{{errorMessage}}</span>

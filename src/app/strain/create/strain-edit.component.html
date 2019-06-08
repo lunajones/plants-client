@@ -1,0 +1,39 @@
+<div [ngClass]="isEditTabVisible ? 'full-edit-panel' : ''">
+<div class="edit-container-blocker col-0 col-sm-6 col-lg-9" [@edit-visibility]="isEditTabVisible ? 'visible' : 'hidden' ">
+</div>
+<div class="edit-container col-12 col-sm-6 col-lg-3" [ngClass]="isEditTabVisible ? 'col-12 col-sm-6 col-lg-3' : ''"
+	[@edit-visibility]="isEditTabVisible ? 'visible' : 'hidden' " style="width:30% !important;">
+  <form class="form-inline form" [formGroup]="editForm">
+    <div class="container">
+      <p class="pt-3"></p>
+      <div>
+	      <div class="row">
+	        <div class="col-sm-6 col-xs-12">
+
+	        </div>
+	      </div>
+      </div>
+      <div class="form-group">
+        <div class="button-edit-panel ">
+
+          <button type="button" [hidden]="isEditMode()"
+                  (click)="save()" title="save"
+                  class="btn raised btn-info button-extra-large">
+            <i class="fa fa-save"></i>
+          </button>
+          <button type="button" [hidden]="!isEditMode()"
+                  (click)="update()" class="btn raised btn-info button-extra-large">
+            <i class="fa fa-wrench" title="update"></i>
+          </button>
+          <button type="button" (click)="toggleEditTabVisibility(false)"
+                  class="btn raised btn-secondary button-extra-large">
+            <i class="fa fa-close" title="close"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+</div>

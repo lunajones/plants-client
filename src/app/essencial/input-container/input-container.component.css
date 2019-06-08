@@ -1,0 +1,12 @@
+span.field-validation-message {
+	display: inline-block;
+	margin-top: 0.5rem;
+}
+
+.has-error{
+  border-style: solid !important;
+  border-width: 0.5px !important;
+  border-radius: 4px;
+  border-color: #f54141 !important;
+  opacity: 1.0;
+}

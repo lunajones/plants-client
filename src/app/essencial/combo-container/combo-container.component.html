@@ -1,0 +1,8 @@
+<div class="form-group" [class.has-success]="combo.valid && (combo.dirty || combo.touched)"
+     [class.has-error]="combo.invalid && (combo.dirty || combo.touched)">
+  <label class="control-label sr-only" > <i class="fa fa-check"></i>{{label}}</label>
+
+  <ng-content></ng-content>
+  <br>
+</div>
+<span class="help-block field-validation-message" *ngIf="hasError()"><i class="fa fa-remove text-danger"></i>{{errorMessage}}</span>

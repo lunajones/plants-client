@@ -1,0 +1,26 @@
+<div class="form-group" [formGroup]="form">
+
+  <input #from type="{{type}}" class="rounded-input between-size between-from"
+         [class.has-error]="showErrorMessageFirstField()"
+         id="input_{{id}}_from"
+         name="input_{{name}}_from" formControlName="{{formControlNameFrom}}"
+         placeholder="{{placeHolderFrom}}" autocomplete="off"
+         (blur)="onBlurFirstField()">
+
+  <div class="between-to">
+    <span class="control-label">to</span>
+  </div>
+
+  <input #to type="{{type}}" class="rounded-input between-size between-to"
+         [class.has-error]="showErrorMessageSecondField()"
+         id="input_{{id}}_to"
+         name="input_{{name}}_to" formControlName="{{formControlNameTo}}"
+         placeholder="{{placeHolderTo}}" autocomplete="off"
+         (blur)="onBlurSecondField()">
+
+  <ng-content></ng-content>
+
+  <br>
+</div>
+<span class="help-block field-validation-message" *ngIf="showErrorMessageFirstField() || showErrorMessageSecondField()"><i
+  class="fa fa-remove text-danger"></i>{{errorMessage}}</span>

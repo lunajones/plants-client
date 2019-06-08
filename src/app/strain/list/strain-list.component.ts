@@ -1,18 +1,18 @@
 import {BaseListComponent} from '../../base/base-list.component';
 import {Messenger} from '../../essencial/messenger.service';
-import {Company} from '../company';
-import {CompanyService} from '../company.service';
+import {Strain} from '../strain';
+import {StrainService} from '../strain.service';
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {FormBuilder} from '@angular/forms';
-import {CompanyEditComponent} from '../create/company-edit.component';
+import {FormBuilder, Validators} from '@angular/forms';
+import {StrainEditComponent} from '../create/strain-edit.component';
+import {StrainFilter} from '../strain-filter';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {CompanyFilter} from '../company-filter';
 
 @Component({
-  selector: 'app-company-list',
-  templateUrl: './company-list.component.html',
-  styleUrls: ['./company-list.component.css'],
+  selector: 'app-strain-list',
+  templateUrl: './strain-list.component.html',
+  styleUrls: ['./strain-list.component.css'],
   animations: [trigger('filter-position', [
     state('hidden', style({
       opacity: 0,
@@ -81,11 +81,14 @@ import {CompanyFilter} from '../company-filter';
   ])
   ]
 })
-export class CompanyListComponent extends BaseListComponent<Company, CompanyFilter , CompanyEditComponent, CompanyService>
-  implements OnInit {
+export class StrainListComponent extends BaseListComponent<Strain, StrainFilter, StrainEditComponent, StrainService> implements OnInit {
 
-  constructor(private service: CompanyService,
-              private router: Router,
+  species: any[];
+  requiredExpertizes: any[];
+  flowerings: any[];
+
+  constructor(private service: StrainService,
+    private router: Router,
     private messenger: Messenger,
     private formBuilder: FormBuilder) {
     super(service, messenger, formBuilder);
@@ -93,17 +96,43 @@ export class CompanyListComponent extends BaseListComponent<Company, CompanyFilt
 
   ngOnInit() {
     if (this.editComponent === undefined) {
-      this.editComponent = new CompanyEditComponent(this.service, this.router, this.messenger, this.formBuilder);
+      this.editComponent = new StrainEditComponent(this.service, this.router, this.messenger, this.formBuilder);
     }
 
+    this.resetListForm();
+
+    this.service.getAllSpecies()
+      .subscribe(data => {
+        this.species = data;
+      }, err => this.messenger.showErrorMessage('Search failed. Bad programming. Report this bug to admin.' + err.error));
+
+    this.service.getAllRequiredExpertizes()
+      .subscribe(data => {
+        this.requiredExpertizes = data;
+      }, err => this.messenger.showErrorMessage('Search failed. Bad programming. Report this bug to admin.' + err.error));
+
+    this.service.getAllFlowerings()
+      .subscribe(data => {
+        this.flowerings = data;
+      }, err => this.messenger.showErrorMessage('Search failed. Bad programming. Report this bug to admin.' + err.error));
+  }
+
+  clear(): void {
+    super.clear();
     this.resetListForm();
   }
 
   resetListForm(): void {
     this.listForm = this.initForm({
-      id: this.formBuilder.control(''),
-      name: this.formBuilder.control('')
+      name: this.formBuilder.control('', [Validators.maxLength(50)]),
+      specie: this.formBuilder.control(''),
+      requiredExpertize: this.formBuilder.control(''),
+      flowering: this.formBuilder.control(''),
+      minHeight: this.formBuilder.control(''),
+      maxHeight: this.formBuilder.control('')
     });
   }
+
+
 
 }

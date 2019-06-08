@@ -1,0 +1,15 @@
+
+<div class="col-xs-12" *ngIf="isEmptyResultList()">
+	<span class="clearfix grid-header-info grid-amount-result">We haven't found any
+		results in this search. Sorry.</span>
+</div>
+<div class="col-xs-12" *ngIf="!isEmptyResultList()">
+	<span class="clearfix grid-header-info">We found <b>{{mainGridListSize}}</b>
+		search results.
+	</span>
+</div>
+<table class="form-group table table-sm-12 table-hover">
+	<ng-content></ng-content>
+</table>
+
+

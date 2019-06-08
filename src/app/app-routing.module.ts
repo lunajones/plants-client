@@ -1,7 +1,9 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {CompanyListComponent} from './company/list/company-list.component';
-import {CompanyCreateComponent} from './company/create/company-create.component';
+import {CompanyEditComponent} from './company/create/company-edit.component';
+import {StrainListComponent} from './strain/list/strain-list.component';
+import {StrainEditComponent} from './strain/create/strain-edit.component';
 
 const routes: Routes = [
   {
@@ -25,14 +27,44 @@ const routes: Routes = [
       },
       {
         path: 'create',
-        component: CompanyCreateComponent,
+        component: CompanyEditComponent,
         data: {
           breadcrumb: 'New'
         }
       },
       {
         path: 'edit/:id',
-        component: CompanyCreateComponent,
+        component: CompanyEditComponent,
+        data: {
+          breadcrumb: 'Edit'
+        }
+      }
+    ]
+  },
+  {
+    path: 'strain',
+    data: {
+      breadcrumb: 'Strain'
+    },
+    children: [
+      {
+        path: 'list',
+        component: StrainListComponent,
+        data: {
+          breadcrumb: 'List'
+        }
+
+      },
+      {
+        path: 'create',
+        component: StrainEditComponent,
+        data: {
+          breadcrumb: 'New'
+        }
+      },
+      {
+        path: 'edit/:id',
+        component: StrainEditComponent,
         data: {
           breadcrumb: 'Edit'
         }
